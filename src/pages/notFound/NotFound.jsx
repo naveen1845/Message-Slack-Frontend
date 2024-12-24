@@ -1,9 +1,10 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from 'react-router-dom';
+
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
 export const NotFound = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     return (
         <div className="h-screen w-full flex items-center justify-center text-center bg-slate-200">
             <Card className='shadow-lg'>
@@ -24,5 +25,5 @@ export const NotFound = () => {
             </CardContent>
         </Card>
         </div>
-    )
-}
+    );
+};
