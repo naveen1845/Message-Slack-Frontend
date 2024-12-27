@@ -9,6 +9,7 @@ export const useSignup = () => {
         mutationFn: signupRequest,
         onSuccess: (data) => {
             console.log('Scuccessfuilly signed up', data);
+
             toast({
                 title: 'Successfully Signed Up',
                 description: 'Redirecting to the login page...',
