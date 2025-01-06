@@ -1,14 +1,28 @@
 import { AvatarImage } from '@radix-ui/react-avatar';
+import { LogOutIcon, SettingsIcon, UserCircleIcon } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import { useAuth } from '@/hooks/context/useAuth';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
-import { LogOutIcon, SettingsIcon, UserCircleIcon } from 'lucide-react';
+import { useAuth } from '@/hooks/context/useAuth';
+import { useToast } from '@/hooks/use-toast';
 
 
 export const UserButton = () => {
     
-    const { auth } = useAuth();
+    const { auth, logout } = useAuth();
+    const { toast } = useToast();
+    const navigate = useNavigate();
+
+    async function handleLogout() {
+        await logout();
+
+        toast({
+            title: 'Logged Out Successfully'
+        });
+
+        navigate('/auth/signin');
+    }
 
     return (
         <DropdownMenu className='cursor-pointer'>
@@ -30,7 +44,7 @@ export const UserButton = () => {
                     Settings
                 </DropdownMenuItem>
                 <DropdownMenuSeparator/>
-                <DropdownMenuItem className='bg-destructive/15 text-destructive'>
+                <DropdownMenuItem className='bg-destructive/15 text-destructive' onClick={handleLogout}>
                     <LogOutIcon />
                     Log out
                 </DropdownMenuItem>
