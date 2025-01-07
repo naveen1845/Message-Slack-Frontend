@@ -1,10 +1,11 @@
-import { createWorkspaceRequest }  from "@/apis/workspaces"
-import { useAuth }  from "@/hooks/context/useAuth"
-import { useMutation }  from "@tanstack/react-query"
+import { useMutation }  from '@tanstack/react-query';
+
+import { createWorkspaceRequest }  from '@/apis/workspaces';
+import { useAuth }  from '@/hooks/context/useAuth';
 
 export const useCreateWorkspace = () => {
 
-    const { auth }  = useAuth()
+    const { auth }  = useAuth();
 
     const { isSuccess, isPending, error, mutateAsync: createWorkspaceMutation}  = useMutation({
         mutationFn : (data) => createWorkspaceRequest({ ...data, token: auth?.token }),
@@ -14,12 +15,12 @@ export const useCreateWorkspace = () => {
         onError: (error) => {
             console.log('Failed to create workspace', error);
         }
-    })
+    });
 
     return {
         isSuccess, 
         isPending, 
         error,
         createWorkspaceMutation
-    }
-}
+    };
+};

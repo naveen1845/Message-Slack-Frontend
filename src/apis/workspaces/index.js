@@ -1,4 +1,4 @@
-import axios from "@/config/axiosConfig";
+import axios from '@/config/axiosConfig';
 
 export const createWorkspaceRequest = async ({ name, discription, token }) => {
     try {
@@ -6,16 +6,16 @@ export const createWorkspaceRequest = async ({ name, discription, token }) => {
             headers: {
                 'x-access-token': token
             }
-        })
+        });
 
-        console.log(response.data);
-        return response.data;
+        console.log(response);
+        return response;
         
     } catch (error) {
         console.log(error);
-        throw error.response.data
+        throw error.response.data;
     }
-}
+};
 
 export const fetchWorkspacesRequest = async ({ token }) => {
     try {
@@ -23,15 +23,15 @@ export const fetchWorkspacesRequest = async ({ token }) => {
             headers: {
                 'x-access-token': token
             }
-        })
+        });
 
-        console.log(response);
+        console.log(response.data.data);
         
-        return response.data;
+        return response.data.data;
         
     } catch (error) {
         console.log(error);
         throw error.response.data;
         
     }
-}
+};
