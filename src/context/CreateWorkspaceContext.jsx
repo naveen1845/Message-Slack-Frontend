@@ -4,7 +4,7 @@ const CreateWorkspaceContext = createContext();
 
 export const CreateWorkspaceContextProvider = ({ children }) => {
 
-    const [ openCreateWorkspaceModal, setOpenCreateWorkspaceModal ] = useState('');
+    const [ openCreateWorkspaceModal, setOpenCreateWorkspaceModal ] = useState(false);
 
     return (
         <CreateWorkspaceContext.Provider value={ { openCreateWorkspaceModal, setOpenCreateWorkspaceModal } }>

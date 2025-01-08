@@ -1,18 +1,22 @@
-import { Button } from "@/components/ui/button"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { useAuth } from "@/hooks/context/useAuth"
-import { ChevronDown, FilterIcon, Settings, SquarePenIcon, UserPlus } from "lucide-react"
+import { ChevronDown, FilterIcon, Settings, SquarePenIcon, UserPlus } from 'lucide-react';
+
+import { Button } from '@/components/ui/button';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { useAuth } from '@/hooks/context/useAuth';
+import { useWorkspacePreferenceModal } from '@/hooks/context/useWorkspacePreferenceModal';
 
 export const WorkspacePanelHeader = ( { workspace } ) => {
 
-    const { auth } = useAuth()
+    const { auth } = useAuth();
+
+    const { setOpenPreference } = useWorkspacePreferenceModal()
 
     const workspaceMembers = workspace?.members;
     
 
     const isLoggedInMemberAdmin = workspaceMembers?.find((member) => {
-        return member.memberId === auth?.user?._id && member.role === 'admin'
-    })
+        return member.memberId === auth?.user?._id && member.role === 'admin';
+    });
 
     
 
@@ -43,7 +47,7 @@ export const WorkspacePanelHeader = ( { workspace } ) => {
                     <DropdownMenuSeparator />
                     {isLoggedInMemberAdmin && (
                         <>
-                            <DropdownMenuItem className="cursor-pointer py-3">
+                            <DropdownMenuItem className="cursor-pointer py-3" onClick={() => setOpenPreference(true)}>
                                 <Settings />
                                 Preferences
                             </DropdownMenuItem>
@@ -70,5 +74,5 @@ export const WorkspacePanelHeader = ( { workspace } ) => {
                 </Button>
             </div>
         </div>
-    )
-}
+    );
+};
