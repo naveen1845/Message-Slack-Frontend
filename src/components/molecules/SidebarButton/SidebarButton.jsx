@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button"
+import { Button } from '@/components/ui/button';
 
 export const SidebarButton = ({ label, Icon }) => {
     return (
@@ -10,5 +10,5 @@ export const SidebarButton = ({ label, Icon }) => {
                 {label}
             </span>
         </div>
-    )
-}
+    );
+};

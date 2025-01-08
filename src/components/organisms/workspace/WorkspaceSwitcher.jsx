@@ -1,19 +1,20 @@
-import { Button } from "@/components/ui/button"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { useFetchWorkspaceDetails } from "@/hooks/apis/workspaces/useFetchWorkspaceDetails"
-import { useFetchWorkspaces } from "@/hooks/apis/workspaces/useFetchWorkspaces"
-import { Loader, Loader2 } from "lucide-react"
-import { useNavigate, useParams } from "react-router-dom"
+import { Loader, Loader2 } from 'lucide-react';
+import { useNavigate, useParams } from 'react-router-dom';
+
+import { Button } from '@/components/ui/button';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { useFetchWorkspaceDetails } from '@/hooks/apis/workspaces/useFetchWorkspaceDetails';
+import { useFetchWorkspaces } from '@/hooks/apis/workspaces/useFetchWorkspaces';
 
 export const WorkspaceSwitcher = () => {
 
-    const { workspaceId } = useParams()
+    const { workspaceId } = useParams();
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
-    const { isFetching: fetchingWorkspaces, workspaces } = useFetchWorkspaces()
+    const { isFetching: fetchingWorkspaces, workspaces } = useFetchWorkspaces();
 
-    const { workspaceDetails, isFetching } = useFetchWorkspaceDetails(workspaceId)
+    const { workspaceDetails, isFetching } = useFetchWorkspaceDetails(workspaceId);
     return(
         <DropdownMenu >
             <DropdownMenuTrigger className="outline-none">
@@ -34,7 +35,7 @@ export const WorkspaceSwitcher = () => {
 
                 {fetchingWorkspaces ? (<Loader2 />) : (workspaces.map((workspace) => {
                     if (workspace._id == workspaceId) {
-                        return
+                        return;
                     }
 
                     return (
@@ -43,10 +44,10 @@ export const WorkspaceSwitcher = () => {
                         >
                             <p>{workspace.name}</p>
                         </DropdownMenuItem>
-                    )
+                    );
                 }))}
             </DropdownMenuContent>
             
         </DropdownMenu>
-    )
-}
+    );
+};

@@ -1,7 +1,9 @@
-import { UserButton } from "@/components/atoms/UserButton/UserButton"
-import { SidebarButton } from "@/components/molecules/SidebarButton/SidebarButton"
-import { BellIcon, HomeIcon, MessageSquare, MoreHorizontal } from "lucide-react"
-import { WorkspaceSwitcher } from "./WorkspaceSwitcher"
+import { BellIcon, HomeIcon, MessageSquare, MoreHorizontal } from 'lucide-react';
+
+import { UserButton } from '@/components/atoms/UserButton/UserButton';
+import { SidebarButton } from '@/components/molecules/SidebarButton/SidebarButton';
+
+import { WorkspaceSwitcher } from './WorkspaceSwitcher';
 
 export const Sidebar = () => {
     return (
@@ -31,5 +33,5 @@ export const Sidebar = () => {
             </div> 
 
         </aside>
-    )
-}
+    );
+};

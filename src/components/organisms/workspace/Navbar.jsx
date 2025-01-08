@@ -1,14 +1,15 @@
-import { Button } from "@/components/ui/button"
-import { useFetchWorkspaceDetails } from "@/hooks/apis/workspaces/useFetchWorkspaceDetails"
-import { Info, InfoIcon, Search, SearchIcon } from "lucide-react"
-import { useParams } from "react-router-dom"
+import { InfoIcon, SearchIcon } from 'lucide-react';
+import { useParams } from 'react-router-dom';
+
+import { Button } from '@/components/ui/button';
+import { useFetchWorkspaceDetails } from '@/hooks/apis/workspaces/useFetchWorkspaceDetails';
 
 export const Navbar = () => {
 
-    const { workspaceId } = useParams()
+    const { workspaceId } = useParams();
     
 
-    const { workspaceDetails } = useFetchWorkspaceDetails(workspaceId)
+    const { workspaceDetails } = useFetchWorkspaceDetails(workspaceId);
 
     return (
         <nav
@@ -37,5 +38,5 @@ export const Navbar = () => {
                 </Button>
             </div>
         </nav>
-    )
-}
+    );
+};
