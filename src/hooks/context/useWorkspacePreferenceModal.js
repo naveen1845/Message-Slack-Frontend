@@ -1,7 +1,8 @@
 
-import WorkspacePreferenceModalContext from "@/context/WorkspacePreferenceModalContext"
-import { useContext } from "react"
+import { useContext } from 'react';
+
+import WorkspacePreferenceModalContext from '@/context/WorkspacePreferenceModalContext';
 
 export const useWorkspacePreferenceModal = () => {
     return useContext(WorkspacePreferenceModalContext);
-}
+};

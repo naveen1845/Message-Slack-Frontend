@@ -4,12 +4,13 @@ import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { useAuth } from '@/hooks/context/useAuth';
 import { useWorkspacePreferenceModal } from '@/hooks/context/useWorkspacePreferenceModal';
+import { useEffect } from 'react';
 
 export const WorkspacePanelHeader = ( { workspace } ) => {
 
     const { auth } = useAuth();
 
-    const { setOpenPreference } = useWorkspacePreferenceModal()
+    const { setOpenPreference, setWorkspace} = useWorkspacePreferenceModal();
 
     const workspaceMembers = workspace?.members;
     
@@ -18,7 +19,9 @@ export const WorkspacePanelHeader = ( { workspace } ) => {
         return member.memberId === auth?.user?._id && member.role === 'admin';
     });
 
-    
+    useEffect(() => {
+        setWorkspace(workspace)
+    }, [workspace])
 
     return (
         <div className="px-2 py-3 h-[60px] flex items-center justify-between gap-3">
