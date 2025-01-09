@@ -11,7 +11,7 @@ export const Home = () => {
 
     const navigate = useNavigate();
 
-    const { setOpenCreateWorkspaceModal } = useCreateWorkspaceModal()
+    const { setOpenCreateWorkspaceModal } = useCreateWorkspaceModal();
 
     useEffect(() => {
         if (isFetching) {

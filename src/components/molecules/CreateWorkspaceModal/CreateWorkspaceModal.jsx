@@ -6,6 +6,7 @@ import { Dialog, DialogContent,DialogDescription,DialogHeader, DialogTitle } fro
 import { Input } from '@/components/ui/input';
 import { useCreateWorkspace } from '@/hooks/apis/workspaces/useCreateWorkspace';
 import { useCreateWorkspaceModal } from '@/hooks/context/useCreateWorkspaceModal';
+import { useQueryClient } from '@tanstack/react-query';
 
 export const CreateWorkspaceModal = () => {
 
@@ -15,6 +16,8 @@ export const CreateWorkspaceModal = () => {
 
     const { isPending, createWorkspaceMutation } = useCreateWorkspace();
 
+    const queryClient = useQueryClient()
+
     const navigate = useNavigate();
 
     async function handleFormSubmit(e){
@@ -23,6 +26,7 @@ export const CreateWorkspaceModal = () => {
             const data = await createWorkspaceMutation({ name: workspaceName });
             console.log('created the workspace: ', data);
             navigate(`/workspaces/${data._id}`);
+            queryClient.invalidateQueries('fetchWorkspaces')
             
         } catch (error) {
             console.log('error creating workspace', error);

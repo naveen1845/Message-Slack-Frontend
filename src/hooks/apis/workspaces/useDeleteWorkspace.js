@@ -1,28 +1,29 @@
-import { deleteWorkspaceRequest } from "@/apis/workspaces"
-import { useAuth } from "@/hooks/context/useAuth"
-import { useMutation } from "@tanstack/react-query"
+import { useMutation } from '@tanstack/react-query';
+
+import { deleteWorkspaceRequest } from '@/apis/workspaces';
+import { useAuth } from '@/hooks/context/useAuth';
 
 export const useDeleteWorkspace = (workspaceId) => {
-    const { auth }  = useAuth()
+    const { auth }  = useAuth();
     
     const { isPending, isSuccess, error, mutateAsync: deleteWorkspaceMutation} = useMutation({
         mutationFn: () => deleteWorkspaceRequest({workspaceId: workspaceId, token: auth?.token }),
         onSuccess: () => {
-            console.log('workspace deleted successfully')
+            console.log('workspace deleted successfully');
         },
         onError: () => {
-            console.log('error deleting workspace')
+            console.log('error deleting workspace');
         }
         
         
-    })
+    });
 
     return {
         isPending, 
         isSuccess, 
         error, 
         deleteWorkspaceMutation
-    }
+    };
         
     
-}
+};
