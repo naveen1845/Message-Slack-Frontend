@@ -78,10 +78,10 @@ export const updateWorkspaceRequest = async ({ workspaceId, name, token }) => {
         });
         console.log('updated the workspace successfully', response);
         
-        return response.data.data
+        return response.data.data;
     } catch (error) {
-        console.log("updateWorkspaceRequest", updateWorkspaceRequest);
-        throw error.response.data
+        console.log('updateWorkspaceRequest', updateWorkspaceRequest);
+        throw error.response.data;
         
     }
-}
+};

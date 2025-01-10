@@ -7,21 +7,23 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { useDeleteWorkspace } from '@/hooks/apis/workspaces/useDeleteWorkspace';
+import { useUpdateWorkspace } from '@/hooks/apis/workspaces/useUpdateWorkspace';
 import { useWorkspacePreferenceModal } from '@/hooks/context/useWorkspacePreferenceModal';
 import { useToast } from '@/hooks/use-toast';
-import { useUpdateWorkspace } from '@/hooks/apis/workspaces/useUpdateWorkspace';
+import { useConfirm } from '@/hooks/useConfirm';
 
 export const WorkspacePreferenceModal = () => {
     const [workspaceId, setWorkspaceId] = useState(null);
     const [inputValue, setInputValue] = useState(null);
-    const [openUpdateModal, setOpenUpdateModal] = useState(false)
+    const [openUpdateModal, setOpenUpdateModal] = useState(false);
     const { toast } = useToast();
     const navigate = useNavigate();
     const queryClient = useQueryClient();
     
     const { openPreference, setOpenPreference, workspace } = useWorkspacePreferenceModal();
     const { deleteWorkspaceMutation } = useDeleteWorkspace( workspaceId );
-    const { isPending, updateWorkpaceMutation } = useUpdateWorkspace( workspaceId )
+    const { isPending, updateWorkpaceMutation } = useUpdateWorkspace( workspaceId );
+    const { ConfirmDialog, Confirmation } = useConfirm({title: 'Confirm Workspace Deletion?', message: 'Are you sure you want to delete this workspace? This action cannot be undone, and all associated data will be permanently removed.'})
     
 
     useEffect(() => {
@@ -37,6 +39,10 @@ export const WorkspacePreferenceModal = () => {
     async function handleDeleteWorkspace(e) {
         e.preventDefault();
         try {
+            const ok = await Confirmation();
+            if (!ok) {
+                return;
+            }
             const response = await deleteWorkspaceMutation();
             console.log('workspace deleted successfully onclick', response);
             toast({
@@ -57,16 +63,16 @@ export const WorkspacePreferenceModal = () => {
     }
 
     async function handleSubmit(e) {
-        e.preventDefault()
+        e.preventDefault();
         try {
-            await updateWorkpaceMutation(inputValue)
-            console.log('Workspace updated successfully')
+            await updateWorkpaceMutation(inputValue);
+            console.log('Workspace updated successfully');
             toast({
                 title: 'Workspace Updated',
                 type: 'success'
-            })
-            setOpenUpdateModal(false)
-            queryClient.invalidateQueries(`fetchWorkspaceById-${workspaceId}`)
+            });
+            setOpenUpdateModal(false);
+            queryClient.invalidateQueries(`fetchWorkspaceById-${workspaceId}`);
         } catch (error) {
             console.log('error in onclick to update', error);
             toast({
@@ -74,12 +80,14 @@ export const WorkspacePreferenceModal = () => {
                 type: 'error'
             });
         }finally{
-            setOpenUpdateModal(false)
+            setOpenUpdateModal(false);
         }
     }
 
     return (
-        <Dialog open={openPreference} onOpenChange={handleClose}>
+        <>  
+            <ConfirmDialog />
+            <Dialog open={openPreference} onOpenChange={handleClose}>
             <DialogContent>
                 <DialogHeader>
                     <DialogTitle>
@@ -155,6 +163,7 @@ export const WorkspacePreferenceModal = () => {
                 
             </DialogContent>
 
-        </Dialog>
+            </Dialog>
+        </>
     );
 };
