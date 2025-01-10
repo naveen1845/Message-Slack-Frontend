@@ -1,31 +1,31 @@
-import { Button } from "@/components/ui/button"
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader } from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { DialogTitle } from "@radix-ui/react-dialog"
-import { useState } from "react"
+import { DialogTitle } from '@radix-ui/react-dialog';
+import { useState } from 'react';
+
+import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader } from '@/components/ui/dialog';
 
 export const useConfirm = ({
     title,
     message
 }) => {
 
-    const [promise, setPromise] = useState(null)
+    const [promise, setPromise] = useState(null);
 
     async function Confirmation(){
         console.log('Confirmation recieved');
         
         return new Promise((resolve) => {
-            return setPromise({resolve})
-        })
+            return setPromise({resolve});
+        });
     }
 
     function handleClose(){
-        setPromise(null)
+        setPromise(null);
     }
 
     function handleProceed() {
-        promise?.resolve(true)
-        handleClose()
+        promise?.resolve(true);
+        handleClose();
     }
 
 
@@ -56,12 +56,12 @@ export const useConfirm = ({
                     </DialogFooter>
                 </DialogContent>
             </Dialog>
-        )
-    }
+        );
+    };
 
 
     return {
         ConfirmDialog,
         Confirmation
-    }
-}
+    };
+};

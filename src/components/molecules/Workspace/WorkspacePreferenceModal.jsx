@@ -23,7 +23,7 @@ export const WorkspacePreferenceModal = () => {
     const { openPreference, setOpenPreference, workspace } = useWorkspacePreferenceModal();
     const { deleteWorkspaceMutation } = useDeleteWorkspace( workspaceId );
     const { isPending, updateWorkpaceMutation } = useUpdateWorkspace( workspaceId );
-    const { ConfirmDialog, Confirmation } = useConfirm({title: 'Confirm Workspace Deletion?', message: 'Are you sure you want to delete this workspace? This action cannot be undone, and all associated data will be permanently removed.'})
+    const { ConfirmDialog, Confirmation } = useConfirm({title: 'Confirm Workspace Deletion?', message: 'Are you sure you want to delete this workspace? This action cannot be undone, and all associated data will be permanently removed.'});
     
 
     useEffect(() => {
