@@ -1,12 +1,15 @@
 import { ChevronDown, FilterIcon, Settings, SquarePenIcon, UserPlus } from 'lucide-react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { useAuth } from '@/hooks/context/useAuth';
 import { useWorkspacePreferenceModal } from '@/hooks/context/useWorkspacePreferenceModal';
+import { InviteModal } from '../InviteModal/InviteModal';
 
 export const WorkspacePanelHeader = ( { workspace } ) => {
+
+    const [ openInviteModal, setOpenInviteModal ] = useState(false)
 
     const { auth } = useAuth();
 
@@ -25,6 +28,11 @@ export const WorkspacePanelHeader = ( { workspace } ) => {
 
     return (
         <div className="px-2 py-3 h-[60px] flex items-center justify-between gap-3">
+            <InviteModal 
+                openInviteModal={openInviteModal}
+                setOpenInviteModal={setOpenInviteModal}
+                workspace={workspace}
+            />
             <DropdownMenu>
                 <DropdownMenuTrigger>
                     <Button 
@@ -54,7 +62,7 @@ export const WorkspacePanelHeader = ( { workspace } ) => {
                                 <Settings />
                                 Preferences
                             </DropdownMenuItem>
-                            <DropdownMenuItem className="cursor-pointer py-3">
+                            <DropdownMenuItem className="cursor-pointer py-3" onClick={() => setOpenInviteModal(true)}>
                                 <UserPlus/>
                                 Invite
                             </DropdownMenuItem>
