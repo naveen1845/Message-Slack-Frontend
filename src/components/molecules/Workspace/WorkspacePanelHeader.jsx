@@ -5,11 +5,12 @@ import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { useAuth } from '@/hooks/context/useAuth';
 import { useWorkspacePreferenceModal } from '@/hooks/context/useWorkspacePreferenceModal';
+
 import { InviteModal } from '../InviteModal/InviteModal';
 
 export const WorkspacePanelHeader = ( { workspace } ) => {
 
-    const [ openInviteModal, setOpenInviteModal ] = useState(false)
+    const [ openInviteModal, setOpenInviteModal ] = useState(false);
 
     const { auth } = useAuth();
 
