@@ -1,6 +1,7 @@
-import CurrentWorkspaceContext from "@/context/CurrentWorkspaceContext"
-import { useContext } from "react"
+import { useContext } from 'react';
+
+import CurrentWorkspaceContext from '@/context/CurrentWorkspaceContext';
 
 export const useCurrentWorkspace = () => {
-    return useContext(CurrentWorkspaceContext)
-}
+    return useContext(CurrentWorkspaceContext);
+};

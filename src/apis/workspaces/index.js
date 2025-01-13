@@ -93,13 +93,13 @@ export const createChannelRequest = async ( {workspaceId, channelName, token } )
             headers: {
                 'x-access-token' : token
             }
-        })
+        });
         console.log('createChannelRequest: ', response.data.data);
         
-        return response.data.data
+        return response.data.data;
     } catch (error) {
         console.log(error);
-        throw error.response.data
+        throw error.response.data;
         
     }
-}
+};

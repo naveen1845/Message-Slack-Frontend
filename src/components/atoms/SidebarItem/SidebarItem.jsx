@@ -1,7 +1,7 @@
+import { cva } from 'class-variance-authority';
 import { Link, useParams } from 'react-router-dom';
 
 import { Button } from '@/components/ui/button';
-import { cva } from 'class-variance-authority';
 
 const sideBarItemVariants = cva(
     'flex items-center justify-start gap-1.5 font-normal h-7 px-[20px] text-sm overflow-hidden',

@@ -1,14 +1,14 @@
-import { createContext, useState } from "react"
+import { createContext, useState } from 'react';
 
-const CurrentWorkspaceContext = createContext()
+const CurrentWorkspaceContext = createContext();
 
 export const CurrentWorkspaceContextProvider = ( {children} ) => {
-    const [ currentWorkspace, setCurrentWorkspace ] = useState()
+    const [ currentWorkspace, setCurrentWorkspace ] = useState();
     return (
         <CurrentWorkspaceContext.Provider value={{ currentWorkspace, setCurrentWorkspace }}>
             {children}
         </CurrentWorkspaceContext.Provider>
-    )
-}
+    );
+};
 
-export default CurrentWorkspaceContext
+export default CurrentWorkspaceContext;

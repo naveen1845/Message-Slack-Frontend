@@ -1,10 +1,10 @@
 import { InfoIcon, SearchIcon } from 'lucide-react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { Button } from '@/components/ui/button';
 import { useFetchWorkspaceDetails } from '@/hooks/apis/workspaces/useFetchWorkspaceDetails';
 import { useCurrentWorkspace } from '@/hooks/context/useCurrentWorkspace';
-import { useEffect } from 'react';
 
 export const Navbar = () => {
 
@@ -13,13 +13,13 @@ export const Navbar = () => {
 
     const { workspaceDetails } = useFetchWorkspaceDetails(workspaceId);
 
-    const { setCurrentWorkspace } = useCurrentWorkspace()
+    const { setCurrentWorkspace } = useCurrentWorkspace();
 
     useEffect(() => {
         if (workspaceDetails) {
-            setCurrentWorkspace(workspaceDetails)
+            setCurrentWorkspace(workspaceDetails);
         }
-    }, [setCurrentWorkspace, workspaceDetails])
+    }, [setCurrentWorkspace, workspaceDetails]);
 
     return (
         <nav

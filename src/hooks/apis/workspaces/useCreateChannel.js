@@ -1,10 +1,11 @@
-import { createChannelRequest } from "@/apis/workspaces"
-import { useAuth } from "@/hooks/context/useAuth"
-import { useMutation } from "@tanstack/react-query"
+import { useMutation } from '@tanstack/react-query';
+
+import { createChannelRequest } from '@/apis/workspaces';
+import { useAuth } from '@/hooks/context/useAuth';
 
 export const useCreateChannel = (workspaceId) => {
 
-    const {auth} = useAuth()
+    const {auth} = useAuth();
 
     const { isPending, isSuccess, error, mutateAsync: createChannelMutation} = useMutation({
         mutationFn: (channelName) => createChannelRequest({workspaceId: workspaceId, channelName : channelName, token: auth?.token}),
@@ -16,12 +17,12 @@ export const useCreateChannel = (workspaceId) => {
             console.log('error creating channel', error);
             
         }
-    })
+    });
 
     return {
         isPending, 
         isSuccess, 
         error, 
         createChannelMutation
-    }
-}
+    };
+};

@@ -1,10 +1,10 @@
+import { Hash, Loader2 } from 'lucide-react';
 import { useParams } from 'react-router-dom';
 
-import { WorkspacePanelHeader } from '@/components/molecules/Workspace/WorkspacePanelHeader';
-import { useFetchWorkspaceDetails } from '@/hooks/apis/workspaces/useFetchWorkspaceDetails';
 import { SidebarItem } from '@/components/atoms/SidebarItem/SidebarItem';
-import { Hash, Loader2 } from 'lucide-react';
+import { WorkspacePanelHeader } from '@/components/molecules/Workspace/WorkspacePanelHeader';
 import { WorkspacePanelSection } from '@/components/molecules/Workspace/WorkspacePanelSection';
+import { useFetchWorkspaceDetails } from '@/hooks/apis/workspaces/useFetchWorkspaceDetails';
 
 export const WorkspacePanel = () => {
 
@@ -36,7 +36,7 @@ export const WorkspacePanel = () => {
                                 label={channel.name}
                                 id={channel._id}
                             />
-                        )
+                        );
                     })
                     )
                 }

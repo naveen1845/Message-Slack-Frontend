@@ -1,17 +1,18 @@
-import { Button } from "@/components/ui/button"
-import { useCreateChannelModal } from "@/hooks/context/useCreateChannelModal"
-import { PlusCircleIcon } from "lucide-react"
-import { useState } from "react"
-import { FaCaretDown, FaCaretRight } from "react-icons/fa"
+import { PlusCircleIcon } from 'lucide-react';
+import { useState } from 'react';
+import { FaCaretDown, FaCaretRight } from 'react-icons/fa';
+
+import { Button } from '@/components/ui/button';
+import { useCreateChannelModal } from '@/hooks/context/useCreateChannelModal';
 
 export const WorkspacePanelSection = ({
     children,
     label
 }) => {
 
-    const [ open, setOpen ] = useState(true)
+    const [ open, setOpen ] = useState(true);
 
-    const { setOpenChannelModal } = useCreateChannelModal()
+    const { setOpenChannelModal } = useCreateChannelModal();
 
     return (
         <div className="flex flex-col m-2">
@@ -39,5 +40,5 @@ export const WorkspacePanelSection = ({
             </div>
             {open && children}
         </div>
-    )
-}
+    );
+};
