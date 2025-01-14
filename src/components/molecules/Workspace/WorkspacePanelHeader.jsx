@@ -20,7 +20,7 @@ export const WorkspacePanelHeader = ( { workspace } ) => {
     
 
     const isLoggedInMemberAdmin = workspaceMembers?.find((member) => {
-        return member.memberId === auth?.user?._id && member.role === 'admin';
+        return member.memberId._id === auth?.user?._id && member.role === 'admin';
     });
 
     useEffect(() => {
