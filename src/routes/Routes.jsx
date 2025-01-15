@@ -6,6 +6,7 @@ import { SignupContainer } from '@/components/organisms/auth/SignupContainer';
 import { Auth } from '@/pages/auth/Auth';
 import { Home } from '@/pages/Home/Home';
 import { NotFound } from '@/pages/notFound/NotFound';
+import { ChannelPage } from '@/pages/Workspaces/ChannelPage';
 import { JoinPage } from '@/pages/Workspaces/JoinPage';
 import { WorkspaceLayout } from '@/pages/Workspaces/Layout';
 
@@ -16,6 +17,7 @@ export const AppRoutes = () => {
             <Route path='/auth/signin' element={<Auth><SigninContainer /></Auth>}/>
             <Route path='/home' element={<ProtectedRouter><Home/></ProtectedRouter>} />
             <Route path='/workspaces/:workspaceId' element={<ProtectedRouter><WorkspaceLayout></WorkspaceLayout></ProtectedRouter>} />
+            <Route path='/workspaces/:workspaceId/channels/:channelId' element={<ProtectedRouter><WorkspaceLayout><ChannelPage></ChannelPage></WorkspaceLayout></ProtectedRouter>} />
             <Route path='/workspaces/join/:workspaceId' element={<JoinPage/>} />
 
 

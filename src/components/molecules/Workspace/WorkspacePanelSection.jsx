@@ -3,16 +3,14 @@ import { useState } from 'react';
 import { FaCaretDown, FaCaretRight } from 'react-icons/fa';
 
 import { Button } from '@/components/ui/button';
-import { useCreateChannelModal } from '@/hooks/context/useCreateChannelModal';
 
 export const WorkspacePanelSection = ({
     children,
-    label
+    label,
+    onIconClick
 }) => {
 
     const [ open, setOpen ] = useState(true);
-
-    const { setOpenChannelModal } = useCreateChannelModal();
 
     return (
         <div className="flex flex-col m-2">
@@ -33,7 +31,7 @@ export const WorkspacePanelSection = ({
                 <Button  
                     size='xs'
                     className='ml-auto hover:scale-110 transition-all bg-black hover:bg-black'
-                    onClick={() => setOpenChannelModal(true)}
+                    onClick={onIconClick}
                 >
                     <PlusCircleIcon />
                 </Button>
