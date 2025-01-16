@@ -49,7 +49,6 @@ export const WorkspacePanel = () => {
 
                 <WorkspacePanelSection
                     label='Members'
-                    onIconClick={() => {}}
                 >
                     { isFetching ? <div className="flex justify-center items-center h-full">
                         <Loader2 className="animate-spin text-white" />

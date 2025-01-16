@@ -28,13 +28,13 @@ export const WorkspacePanelSection = ({
                         { open ? <FaCaretDown /> : <FaCaretRight /> }
                     </Button>
                 </div>
-                <Button  
+                {onIconClick && <Button  
                     size='xs'
                     className='ml-auto hover:scale-110 transition-all bg-black hover:bg-black'
                     onClick={onIconClick}
                 >
                     <PlusCircleIcon />
-                </Button>
+                </Button>}
             </div>
             {open && children}
         </div>

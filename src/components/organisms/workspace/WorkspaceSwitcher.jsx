@@ -19,7 +19,7 @@ export const WorkspaceSwitcher = () => {
         <DropdownMenu >
             <DropdownMenuTrigger className="outline-none">
                 <Button className='size-9 relative overflow-hidden bg-[#ABABAD] hover:bg-[#ABABAD]/80 font-semibold text-slate-800 text-xl'>
-                    {isFetching ? (<Loader className="animate-spin" />) : workspaceDetails.name.charAt(0).toUpperCase()}
+                    {isFetching ? (<Loader className="animate-spin" />) : workspaceDetails?.name.charAt(0).toUpperCase()}
                 </Button>
             </DropdownMenuTrigger>
 
@@ -42,7 +42,7 @@ export const WorkspaceSwitcher = () => {
                         <DropdownMenuItem key={workspace._id}
                             onClick={() => navigate(`/workspaces/${workspace._id}`)}
                         >
-                            <p>{workspace.name}</p>
+                            <p>{workspace?.name}</p>
                         </DropdownMenuItem>
                     );
                 }))}

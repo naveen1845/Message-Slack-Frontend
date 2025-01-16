@@ -18,6 +18,7 @@ export const Home = () => {
             return;
         }
 
+        
         console.log('workspaces downloaded : ', workspaces);
 
         if (workspaces.length == 0) {
