@@ -6,7 +6,7 @@ import { useAuth } from '@/hooks/context/useAuth';
 export const useGetChannelById = (id) => {
     const { auth } = useAuth();
 
-    const { isFetching, isSuccess, error, data: channelDetails } =  useQuery({
+    const { isFetching, isSuccess, isError, error, data: channelDetails } =  useQuery({
         queryKey: [`channel-${id}`],
         queryFn: () => getChannelByIdRequest({channelId : id, token : auth?.token}),
         staleTime: 30000
@@ -16,6 +16,7 @@ export const useGetChannelById = (id) => {
         isFetching, 
         isSuccess,
         error,
+        isError,
         channelDetails
     };
 };

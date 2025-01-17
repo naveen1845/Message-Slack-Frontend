@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { useCurrentWorkspace } from '@/hooks/context/useCurrentWorkspace';
 import { cn } from '@/lib/utils';
 const userItemVariants = cva(
-    'flex items-center gap-1.5 justify-start font-normal h-7 py-5 mt-2 text-sm',
+    'flex items-center gap-1.5 justify-start font-normal font-mono h-7 py-5 mt-2 text-sm',
     {
         variants: {
             variant: {

@@ -4,7 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
 const sideBarItemVariants = cva(
-    'flex items-center justify-start gap-1.5 font-normal h-7 px-[20px] text-sm overflow-hidden',
+    'flex items-center justify-start gap-1.5 mt-2 font-normal h-7 px-[20px] text-sm overflow-hidden',
     {
         variants: {
             variant: {
@@ -27,7 +27,6 @@ export const SidebarItem = ({
 
     const { workspaceId } = useParams();
     return (
-        <div>
             <Button
                 variant='oultine'
                 className={sideBarItemVariants({variant})}
@@ -41,6 +40,5 @@ export const SidebarItem = ({
                 </Link>
 
             </Button>
-        </div>
     );
 };
