@@ -1,12 +1,13 @@
 import { Loader2Icon, TriangleAlertIcon } from 'lucide-react';
 import { useParams } from 'react-router-dom';
 
+import { ChannelHeader } from '@/components/molecules/Channel/ChannelHeader';
 import { ChatIput } from '@/components/molecules/ChatInput/ChatInput';
 import { useGetChannelById } from '@/hooks/apis/channels/useGetChannelById';
 
 export const ChannelPage = () => {
     const { channelId } = useParams();
-    const {isFetching, isError} = useGetChannelById( channelId );
+    const {isFetching, isError, channelDetails} = useGetChannelById( channelId );
 
     if (isFetching) {
         return(
@@ -27,6 +28,9 @@ export const ChannelPage = () => {
 
     return (
         <div className='h-full flex flex-col'>
+            <ChannelHeader 
+                name={channelDetails?.name}
+            />
             <div className='flex-1' />
             <ChatIput />
         </div>
