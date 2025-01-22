@@ -97,7 +97,9 @@ export const Editor = ({
                         size='sm'
                         className='ml-auto'
                         onClick={() => {
-                            OnSubmit({ body : JSON.stringify(quillRef.current?.getContents())});
+                            const message = JSON.stringify(quillRef.current?.getContents());
+                            OnSubmit({ body : message});
+                            quillRef.current?.setContents('');
                         }}
                     >
                         <SendHorizonalIcon />
