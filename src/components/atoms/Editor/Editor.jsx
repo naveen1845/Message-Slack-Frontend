@@ -1,13 +1,15 @@
 import 'quill/dist/quill.snow.css';
 
-import { ALargeSmallIcon } from 'lucide-react';
+import { ALargeSmallIcon, ImageIcon, SendHorizonalIcon } from 'lucide-react';
 import Quill from 'quill';
 import { useEffect, useRef, useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 
 
-export const Editor = () => {
+export const Editor = ({
+    OnSubmit
+}) => {
 
     const [toolbarVisibility, setToolbarVisibility] = useState(true);
 
@@ -76,13 +78,29 @@ export const Editor = () => {
         <div className="flex flex-col p-3 gap-1">
             <div className="flex flex-col">
                 <div ref={containerRef}/>
-                <div className="flex px-3">
+                <div className="flex px-3 gap-2">
                     <Button
-                        className='bg-slate-500 p-0.5 hover:bg-blue-600'
-                        size='xs'
+                        className='bg-transparent text-slate-700 p-0.5 hover:text-blue-600 hover:bg-transparent'
+                        size='sm'
                         onClick={toggleToolbar}
                     >
                         <ALargeSmallIcon />
+                    </Button>
+                    <Button
+                        className='bg-transparent text-slate-700 p-0.5 hover:text-blue-600 hover:bg-transparent'
+                        size='sm'
+                        onClick={toggleToolbar}
+                    >
+                        <ImageIcon />
+                    </Button>
+                    <Button
+                        size='sm'
+                        className='ml-auto'
+                        onClick={() => {
+                            OnSubmit({ body : JSON.stringify(quillRef.current?.getContents())});
+                        }}
+                    >
+                        <SendHorizonalIcon />
                     </Button>
                 </div>
             </div>
