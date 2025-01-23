@@ -7,9 +7,9 @@ export const MessageRenderer = ({ value }) => {
     const rendererRef = useRef(null);
     const [isEmpty, setIsEmpty] = useState(false);
 
-    const sanitizeJSON = (jsonString) => {
-        return jsonString.replace(/\\n/g, '\\\\n').replace(/\n/g, '\\n');
-    };
+    // const sanitizeJSON = (jsonString) => {
+    //     return jsonString.replace(/\\n/g, '\\\\n').replace(/\n/g, '\\n');
+    // };
 
     useEffect(() => {
         console.log('Renderer Ref: ', rendererRef.current);
@@ -22,7 +22,7 @@ export const MessageRenderer = ({ value }) => {
         });
 
         quill.disable();
-        value = sanitizeJSON(value);
+        // value = sanitizeJSON(value);
         const content = JSON.parse(value);
         quill.setContents(content);
         console.log('Content: ', quill.root.innerHTML);
